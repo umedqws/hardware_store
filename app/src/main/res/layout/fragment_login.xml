@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".loginFragment">
+    tools:context=".LoginFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,6 +34,7 @@
             android:text="Магазин\nСторитель"
             android:textColor="@color/black"
             android:textSize="26sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/logo"
@@ -42,14 +43,66 @@
     </LinearLayout>
 
 <TextView
+    android:layout_marginTop="80dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/_logo"
     android:textColor="@color/gardware_001"
+    android:id="@+id/textInput"
     android:text="Вход в рилодение Магазин Строитель"
     android:textSize="14sp"/>
 
+    <EditText
+        android:id="@+id/numberLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="Номер мобильного телефона"
+        android:textColor="@color/gardware_001"
+        android:theme="@style/MyEditTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInput"
+        tools:ignore="TouchTargetSizeCheck" />
+    <EditText
+        android:id="@+id/passwordLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
+        android:hint="Номер мобильного телефона"
+        android:textColor="@color/gardware_001"
+        android:theme="@style/MyEditTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/numberLogin"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordLogin"
+        android:textSize="20sp"
+        android:text="Войти"
+        android:layout_marginHorizontal="8dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Зарегистрироваться"
+        android:gravity="center"
+        android:layout_marginBottom="32dp"
+        android:textSize="16sp"
+        android:textColor="@color/gardware_001"
+        android:id="@+id/registration"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
