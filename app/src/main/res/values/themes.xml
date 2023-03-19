@@ -17,6 +17,11 @@
     <style name="MyEditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="colorSecondaryVariant">#FF6D00</item>
         <item name="colorSecondary">#FF6D00</item>
+    </style>
 
+
+    <style name="CardView" parent="CardView.Dark">
+        <item name="android:bottomRightRadius">80dp</item>
+        <item name="android:bottomLeftRadius">24dp</item>
     </style>
 </resources>

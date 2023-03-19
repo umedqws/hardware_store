@@ -10,8 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class RegistrationViewModel(val app: Application) : AndroidViewModel(app) {
-    private  val dataBase = DBase.getInstace(app).usersDao()
+class RegistrationViewModel(app: Application) : AndroidViewModel(app) {
+    private  val dataBase = DBase.getInstance(app).usersDao()
 
     val getUser= MutableLiveData<Users>()
 

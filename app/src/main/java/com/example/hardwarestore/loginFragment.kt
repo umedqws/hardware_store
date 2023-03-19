@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.hardwarestore.databinding.FragmentLoginBinding
@@ -23,14 +24,23 @@ class LoginFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val registrationViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
-        registrationViewModel.getUser.observe(viewLifecycleOwner){
-
-        }
 
         binding.registration.setOnClickListener {
             val navController = findNavController()
             navController.navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+        binding.login.setOnClickListener {
+
+            if ((binding.passwordLogin.text.toString() == "") || (binding.numberLogin.text.toString() == "")){
+                val navController = findNavController()
+                navController.navigate(R.id.action_loginFragment_to_storeFragment)
+            }else{
+                Toast.makeText(
+                    binding.root.context,
+                    "Неправльный пароль или номер телефона",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 

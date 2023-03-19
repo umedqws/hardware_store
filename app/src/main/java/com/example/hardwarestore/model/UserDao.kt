@@ -8,8 +8,10 @@ import androidx.room.Query
 interface UserDao {
     @Query("SELECT * FROM Users WHERE id = :id")
     fun getUser(id:Int):Users
-    @Query("SELECT id FROM Users WHERE numberTelefon = :numberTelefon")
+
+    @Query("SELECT id FROM Users WHERE numberTelefon = :number")
     fun getIdUser(number:String):Int
+
     @Insert
     fun insertUser(users: Users)
 }

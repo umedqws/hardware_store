@@ -27,23 +27,23 @@ class RegistrationFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val registrationViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
-        registrationViewModel.getUser.observe(viewLifecycleOwner){
-
-        }
+//        val registrationViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
+//        registrationViewModel.getUser.observe(viewLifecycleOwner){
+//
+//        }
         binding.back.setOnClickListener {
             val navController = findNavController()
             navController.popBackStack()
         }
-
-        binding.regist.setOnClickListener {
-            registrationViewModel.insertNewUser(
-                binding.firstNameUser.text.toString(),
-            binding.lastNameUser.text.toString(),
-            binding.nickNameUser.text.toString(),
-            binding.passwordUser.text.toString(),
-            binding.numberTelefonUser.text.toString())
-        }
+//
+//        binding.regist.setOnClickListener {
+//            registrationViewModel.insertNewUser(
+//                binding.firstNameUser.text.toString(),
+//            binding.lastNameUser.text.toString(),
+//            binding.nickNameUser.text.toString(),
+//            binding.passwordUser.text.toString(),
+//            binding.numberTelefonUser.text.toString())
+//        }
     }
 
 }
