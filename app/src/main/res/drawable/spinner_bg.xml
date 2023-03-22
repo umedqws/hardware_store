@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
+<item>
+    <layer-list>
+        <item>
+            <shape>
+                <solid android:color="@color/gardware_001"/>
+                <corners android:radius="10dp"/>
+                <padding android:left="10dp"/>
+            </shape>
+        </item>
+        <item android:gravity="end|center_vertical" android:drawable="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+    </layer-list>
+</item>
 </selector>

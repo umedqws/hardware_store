@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_storeFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_storeFragment_to_basketFragment2"
+            app:destination="@id/basketFragment2" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -56,4 +59,9 @@
             android:name="products"
             app:argType="com.example.hardwarestore.model.Products" />
     </fragment>
+    <fragment
+        android:id="@+id/basketFragment2"
+        android:name="com.example.hardwarestore.BasketFragment"
+        android:label="fragment_basket"
+        tools:layout="@layout/fragment_basket" />
 </navigation>

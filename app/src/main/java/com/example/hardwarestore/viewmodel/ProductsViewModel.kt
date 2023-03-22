@@ -1,9 +1,7 @@
 package com.example.hardwarestore.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.hardwarestore.model.Categories
 import com.example.hardwarestore.model.DBase
 import com.example.hardwarestore.model.Products
@@ -15,6 +13,13 @@ class ProductsViewModel(app: Application) : AndroidViewModel(app) {
 
     fun list(): LiveData<List<Products>> = database.getAllProduct()
 
+    private val _search = MutableLiveData<List<Products>>()
+    val searchLiveData: LiveData<List<Products>> = _search
+
+    fun search(query: String) =  viewModelScope.launch(Dispatchers.IO) {
+        val searchingList = database.search(query)
+        _search.postValue(searchingList)
+    }
 
     fun getProductsByCategory(id:Int):LiveData<List<Products>> = database.getProductByCategory(id)
 

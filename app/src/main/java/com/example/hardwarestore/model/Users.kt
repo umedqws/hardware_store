@@ -10,7 +10,7 @@ data class Users(
    @ColumnInfo val lastname:String?,
    @ColumnInfo val nickName:String?,
    @ColumnInfo val password:String?,
-   @ColumnInfo val numberTelefon:String,
+   @ColumnInfo val numberPhone:String?,
    @PrimaryKey(autoGenerate = true) val id:Int = 0,
 
 )

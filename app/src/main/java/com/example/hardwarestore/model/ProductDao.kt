@@ -16,5 +16,7 @@ interface ProductDao {
     @Insert
     fun insertProduct(products: Products)
 
+    @Query("SELECT * FROM Products WHERE nameProduct LIKE '%' || :query || '%';")
+    fun search(query: String): List<Products>
 }
 

@@ -1,20 +1,27 @@
 package com.example.hardwarestore
 
 import android.os.Bundle
-import android.util.Log
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.webkit.RenderProcessGoneDetail
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hardwarestore.databinding.FragmentStoreBinding
 import com.example.hardwarestore.model.Products
 import com.example.hardwarestore.viewmodel.CategoryViewModel
 import com.example.hardwarestore.viewmodel.ProductsViewModel
+import com.example.hardwarestore.viewmodel.RegistrationViewModel
+import java.util.*
 
 class StoreFragment : Fragment() {
     private var _binding: FragmentStoreBinding? = null
@@ -32,6 +39,17 @@ class StoreFragment : Fragment() {
         val adapter: HitAdapter = HitAdapter()
         val categoryAdapter:CategoryAdapter = CategoryAdapter()
         val productAdapter:ProdtuctAdapter = ProdtuctAdapter()
+
+        binding.search.setOnQueryTextFocusChangeListener { _, hasFocus ->
+            if(hasFocus) {
+                binding.layout.visibility = GONE
+                binding.searchRv.visibility = VISIBLE
+            } else {
+                binding.layout.visibility = VISIBLE
+                binding.searchRv.visibility = GONE
+            }
+        }
+
         binding.hitRcView.layoutManager =
             LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
         binding.hitRcView.adapter = adapter
@@ -42,7 +60,9 @@ class StoreFragment : Fragment() {
             LinearLayoutManager(binding.root.context,LinearLayoutManager.HORIZONTAL,false)
         binding.category.adapter = categoryAdapter
 
+
         val viewModel = ViewModelProvider(this)[ProductsViewModel::class.java]
+        val userViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
 
         val cViewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
         viewModel.list().observe(viewLifecycleOwner) {
@@ -69,8 +89,30 @@ class StoreFragment : Fragment() {
         productAdapter.onClick = {
             val action = StoreFragmentDirections.actionStoreFragmentToAboutFragment(it)
             findNavController().navigate(action)
-            Log.v(tag,"asd")
         }
 
+        binding.searchRv.setHasFixedSize(true)
+        binding.searchRv.layoutManager = LinearLayoutManager(requireContext())
+        binding.searchRv.adapter = productAdapter
+
+        viewModel.searchLiveData.observe(viewLifecycleOwner) {
+            productAdapter.submitList(it)
+        }
+        binding.search.setOnQueryTextListener(object : OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if(newText != null)
+                    viewModel.search(newText)
+
+                return true
+            }
+        })
+
+
     }
+
 }
+

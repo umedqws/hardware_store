@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="16dp"
-        android:hint="Номер мобильного телефона"
+        android:hint="Password"
         android:textColor="@color/gardware_001"
         android:theme="@style/MyEditTextStyle"
         app:layout_constraintEnd_toEndOf="parent"

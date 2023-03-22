@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_outline_home_24"
+        android:id="@+id/item1"
+        android:title="Главное меню"
+        app:showAsAction="always"/>
+
+    <item
+        android:icon="@drawable/ic_outline_person_outline_24"
+        android:id="@+id/item2"
+        android:title="Мой Профиль"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:icon="@drawable/ic_outline_shopping_cart_24"
+        android:id="@+id/basketFragment"
+        android:title="Корзина"
+        app:showAsAction="always"/>
+
+    <item
+        android:icon="@drawable/ic_outline_location_on_24"
+        android:id="@+id/item4"
+        android:title="Адрес"
+        app:showAsAction="always"/>
+
 </menu>
