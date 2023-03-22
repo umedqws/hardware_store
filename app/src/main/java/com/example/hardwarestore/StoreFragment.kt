@@ -50,6 +50,7 @@ class StoreFragment : Fragment() {
             }
         }
 
+
         binding.hitRcView.layoutManager =
             LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
         binding.hitRcView.adapter = adapter
@@ -63,8 +64,8 @@ class StoreFragment : Fragment() {
 
         val viewModel = ViewModelProvider(this)[ProductsViewModel::class.java]
         val userViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
-
         val cViewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
+
         viewModel.list().observe(viewLifecycleOwner) {
             adapter.submitList(it)
             productAdapter.submitList(it)
@@ -72,15 +73,39 @@ class StoreFragment : Fragment() {
        cViewModel.listCategory().observe(viewLifecycleOwner){
             categoryAdapter.submitList(it)
         }
+/*
+        binding.textHit.setOnClickListener {
+            viewModel.insertProduct("Бензопила", "Хороший бкнзопила качественный не дорогой хай хай бля ", 2500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",2,R.drawable.b)
+            viewModel.insertProduct("Костюм", "Хороший костюм качественный не дорогой хай хай бля ", 1500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",3,R.drawable.kostyum)
+            viewModel.insertProduct("Бензопила", "Хороший бкнзопила качественный не дорогой хай хай бля ", 2500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",2,R.drawable.b)
+            viewModel.insertProduct("Костюм", "Хороший костюм качественный не дорогой хай хай бля ", 1500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",3,R.drawable.kostyum)
+            viewModel.insertProduct("Бензопила", "Хороший бкнзопила качественный не дорогой хай хай бля ", 2500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",2,R.drawable.b)
+            viewModel.insertProduct("Костюм", "Хороший костюм качественный не дорогой хай хай бля ", 1500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",3,R.drawable.kostyum)
+            viewModel.insertProduct("Бензопила", "Хороший бкнзопила качественный не дорогой хай хай бля ", 2500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",2,R.drawable.b)
+            viewModel.insertProduct("Костюм", "Хороший костюм качественный не дорогой хай хай бля ", 1500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",3,R.drawable.kostyum)
+            viewModel.insertProduct("Бензопила", "Хороший бкнзопила качественный не дорогой хай хай бля ", 2500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",2,R.drawable.b)
+            viewModel.insertProduct("Костюм", "Хороший костюм качественный не дорогой хай хай бля ", 1500,"Хороший бкнзопила качественный не дорогой хай хай бля больше нечего сказать хочешь бери не хочеш иди нахуй",3,R.drawable.kostyum)
 
+        }
+            binding.textKatalog.setOnClickListener {
+                cViewModel.insertCategory("Все")
+                cViewModel.insertCategory("Бензопила")
+                cViewModel.insertCategory("Костюм")
+                cViewModel.insertCategory("Газонокомилки")
+                cViewModel.insertCategory("хз")
+            }
+*/     //доб
 
 
         categoryAdapter.onClickItem = {
             when(it.id){
-                1 ->viewModel.getProductsByCategory(1).observe(viewLifecycleOwner){
+                1 ->viewModel.list().observe(viewLifecycleOwner){
                     productAdapter.submitList(it)
                 }
                 2 ->viewModel.getProductsByCategory(2).observe(viewLifecycleOwner){
+                    productAdapter.submitList(it)
+                }
+                3 ->viewModel.getProductsByCategory(3).observe(viewLifecycleOwner){
                     productAdapter.submitList(it)
                 }
             }

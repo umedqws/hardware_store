@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hardwarestore.databinding.FragmentBasketBinding
 
 
 class BasketFragment : Fragment() {
     private var _binding: FragmentBasketBinding? = null
     private val binding get() = _binding!!
+    lateinit var basketAdapter: BasketAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,13 +27,14 @@ class BasketFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         val typeOrder: MutableList<String> = ArrayList()
         val list = listOf("Курером","Самовызов")
         for (i in list) {
             typeOrder.add(i)
             }
-        val adapter:ArrayAdapter<String> = ArrayAdapter(requireContext(), com.bumptech.glide.R.layout.support_simple_spinner_dropdown_item,typeOrder)
-        binding.spiiner.adapter = adapter
+        val spinnerAdapter:ArrayAdapter<String> = ArrayAdapter(requireContext(), com.bumptech.glide.R.layout.support_simple_spinner_dropdown_item,typeOrder)
+        binding.spiiner.adapter = spinnerAdapter
         binding.spiiner.onItemSelectedListener = object:OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -46,6 +50,11 @@ class BasketFragment : Fragment() {
             }
 
         }
+        binding.RecucleViewBasket.layoutManager = LinearLayoutManager(requireContext())
+
+        basketAdapter = BasketAdapter()
+        binding.RecucleViewBasket.adapter =basketAdapter
     }
+
 
     }

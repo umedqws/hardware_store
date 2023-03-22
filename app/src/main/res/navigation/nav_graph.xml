@@ -32,6 +32,12 @@
         <action
             android:id="@+id/action_loginFragment_to_storeFragment"
             app:destination="@id/storeFragment" />
+        <argument
+            android:name="User"
+            app:argType="com.example.hardwarestore.model.Users" />
+        <action
+            android:id="@+id/action_loginFragment_to_storeFragment2"
+            app:destination="@id/storeFragment" />
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
@@ -49,6 +55,9 @@
         <action
             android:id="@+id/action_storeFragment_to_basketFragment2"
             app:destination="@id/basketFragment2" />
+        <argument
+            android:name="user"
+            app:argType="com.example.hardwarestore.model.Users" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

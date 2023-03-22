@@ -63,8 +63,8 @@ class LoginFragment : Fragment() {
                         ).show()
                     } else {
                         if (binding.numberLogin.text.toString() == it.numberPhone && binding.passwordLogin.text.toString() == it.password) {
-                            val navController = findNavController()
-                            navController.navigate(R.id.action_loginFragment_to_storeFragment)
+                            val action = LoginFragmentDirections.actionLoginFragmentToStoreFragment2(it)
+                            findNavController().navigate(action)
                         } else {
                             Toast.makeText(
                                 binding.root.context,
