@@ -9,20 +9,29 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.hardwarestore.databinding.BasketBinding
 import com.example.hardwarestore.model.Basket
+import com.example.hardwarestore.model.Products
 
-class BasketAdapter:ListAdapter<Basket,BasketAdapter.BasketViewHolder>(BasketDiffUtil()) {
+class BasketAdapter:ListAdapter<Products,BasketAdapter.BasketViewHolder>(BasketDiffUtil()) {
     inner class BasketViewHolder(itemView: View):ViewHolder(itemView){
         val binding = BasketBinding.bind(itemView)
         @SuppressLint("SetTextI18n")
-        fun bind(basket: Basket){
-            basket.image?.let { binding.Image.setImageResource(it) }
-            binding.name.text = basket.nameProduct
-            binding.about.text = basket.aboutProduct
-            binding.price.text = "${basket.price}sm"
+        fun bind(products: Products){
+            products.image?.let { binding.Image.setImageResource(it) }
+            binding.name.text = products.nameProduct
+            binding.about.text = products.aboutProduct
+            binding.price.text = "${products.price}sm"
             binding.plus.setOnClickListener {
                 binding.counter.text = "${binding.counter.text.toString().toInt() + 1}"
             }
-        }
+            binding.minus.setOnClickListener {
+                           if (binding.counter.text.toString().toInt() < 1){
+                               binding.counter.text = "0"
+                           }else{
+                               binding.counter.text = "${binding.counter.text.toString().toInt() - 1}"
+                           }
+
+            }
+            }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketViewHolder {
@@ -34,13 +43,14 @@ class BasketAdapter:ListAdapter<Basket,BasketAdapter.BasketViewHolder>(BasketDif
     }
 }
 
-class BasketDiffUtil:DiffUtil.ItemCallback<Basket>(){
-    override fun areItemsTheSame(oldItem: Basket, newItem: Basket): Boolean {
+class BasketDiffUtil:DiffUtil.ItemCallback<Products>(){
+
+    override fun areItemsTheSame(oldItem: Products, newItem: Products): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Basket, newItem: Basket): Boolean {
-return oldItem == newItem
+    override fun areContentsTheSame(oldItem: Products, newItem: Products): Boolean {
+        return oldItem == newItem
     }
 
 }

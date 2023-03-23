@@ -24,7 +24,6 @@
             app:navGraph="@navigation/nav_graph" />
     </FrameLayout>
 
-
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -32,6 +31,6 @@
         app:menu="@menu/nav_drawer_menu"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:id="@+id/navigat"/>
+        android:id="@+id/navigat" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

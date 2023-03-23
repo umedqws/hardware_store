@@ -23,6 +23,8 @@ class ProductsViewModel(app: Application) : AndroidViewModel(app) {
 
     fun getProductsByCategory(id:Int):LiveData<List<Products>> = database.getProductByCategory(id)
 
+    fun getProductsForBasket(id:Int): LiveData<MutableList<Products>>? = database.getProductForBasket(id)
+
     fun insertProduct(
         name: String,
         des: String,

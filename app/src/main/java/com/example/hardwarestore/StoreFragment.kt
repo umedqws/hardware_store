@@ -14,6 +14,7 @@ import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hardwarestore.databinding.FragmentStoreBinding
@@ -36,9 +37,12 @@ class StoreFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val args:StoreFragmentArgs by navArgs()
         val adapter: HitAdapter = HitAdapter()
         val categoryAdapter:CategoryAdapter = CategoryAdapter()
         val productAdapter:ProdtuctAdapter = ProdtuctAdapter()
+
+
 
         binding.search.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if(hasFocus) {
@@ -112,7 +116,7 @@ class StoreFragment : Fragment() {
         }
 
         productAdapter.onClick = {
-            val action = StoreFragmentDirections.actionStoreFragmentToAboutFragment(it)
+            val action = StoreFragmentDirections.actionStoreFragmentToAboutFragment(it,args.user)
             findNavController().navigate(action)
         }
 

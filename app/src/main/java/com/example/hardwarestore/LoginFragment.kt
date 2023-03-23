@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.hardwarestore.databinding.FragmentLoginBinding
 import com.example.hardwarestore.model.Users
+import com.example.hardwarestore.viewmodel.ActivityViewModel
 import com.example.hardwarestore.viewmodel.RegistrationViewModel
 import kotlinx.coroutines.Job
 
@@ -29,15 +30,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val userViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
-            userViewModel.getAllUser().observe(viewLifecycleOwner){
-                val user = it
-            }
 
         binding.logoText.setOnClickListener {
-            userViewModel.insertNewUser("user","user","user","111","111")
+            //userViewModel.insertNewUser("user","user","user","111","111")
         }
-
-
 
         binding.registration.setOnClickListener {
             val navController = findNavController()
@@ -50,12 +46,12 @@ class LoginFragment : Fragment() {
                     "Неправльный пароль или номер телефона",
                     Toast.LENGTH_SHORT
                 ).show()
-            }else {
+            } else {
                 userViewModel.getUsers(
                     binding.passwordLogin.text.toString(),
                     binding.numberLogin.text.toString()
                 ).observe(viewLifecycleOwner) {
-                    if ((it.numberPhone == null) && (it.password == null)) {
+                    if (it == null) {
                         Toast.makeText(
                             binding.root.context,
                             "Неправльный пароль или номер телефона",
@@ -63,7 +59,9 @@ class LoginFragment : Fragment() {
                         ).show()
                     } else {
                         if (binding.numberLogin.text.toString() == it.numberPhone && binding.passwordLogin.text.toString() == it.password) {
-                            val action = LoginFragmentDirections.actionLoginFragmentToStoreFragment2(it)
+                            val activityViewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
+                            activityViewModel.user = it
+                            val action = LoginFragmentDirections.actionLoginFragmentToStoreFragment(it)
                             findNavController().navigate(action)
                         } else {
                             Toast.makeText(

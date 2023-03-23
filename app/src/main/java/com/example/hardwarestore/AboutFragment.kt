@@ -10,8 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hardwarestore.databinding.FragmentAboutBinding
-import com.example.hardwarestore.databinding.FragmentStoreBinding
-import com.example.hardwarestore.model.UserDao
 import com.example.hardwarestore.viewmodel.BasketViewModel
 import com.example.hardwarestore.viewmodel.RegistrationViewModel
 
@@ -42,15 +40,11 @@ class AboutFragment : Fragment() {
         }
         binding.inBasket.setOnClickListener {
             basketViewModel.insert(
-                args.products.nameProduct!!,
-                args.products.aboutProduct!!,
-                args.products.price!!,
-                args.products.aboutProduct!!,
-                args.products.categoryId!!,
-                args.products.image!!,
-                1
+                args.products.id,
+                args.users.id
             )
         }
+
     }
 
 

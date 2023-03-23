@@ -8,8 +8,14 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hardwarestore.databinding.FragmentBasketBinding
+import com.example.hardwarestore.viewmodel.ActivityViewModel
+import com.example.hardwarestore.viewmodel.BasketViewModel
+import com.example.hardwarestore.viewmodel.ProductsViewModel
+import com.example.hardwarestore.viewmodel.RegistrationViewModel
 
 
 class BasketFragment : Fragment() {
@@ -27,13 +33,16 @@ class BasketFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val  basketViewModel = ViewModelProvider(this)[BasketViewModel::class.java]
 
         val typeOrder: MutableList<String> = ArrayList()
         val list = listOf("Курером","Самовызов")
         for (i in list) {
             typeOrder.add(i)
             }
-        val spinnerAdapter:ArrayAdapter<String> = ArrayAdapter(requireContext(), com.bumptech.glide.R.layout.support_simple_spinner_dropdown_item,typeOrder)
+        val spinnerAdapter:ArrayAdapter<String> = ArrayAdapter(requireContext(),
+            R.layout.spinner,typeOrder)
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spiiner.adapter = spinnerAdapter
         binding.spiiner.onItemSelectedListener = object:OnItemSelectedListener{
             override fun onItemSelected(
@@ -42,7 +51,7 @@ class BasketFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                binding.tvTitle.text = list[position]
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -52,8 +61,17 @@ class BasketFragment : Fragment() {
         }
         binding.RecucleViewBasket.layoutManager = LinearLayoutManager(requireContext())
 
+        val activityViewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
+        val productViewModel = ViewModelProvider(this)[ProductsViewModel::class.java]
+
         basketAdapter = BasketAdapter()
         binding.RecucleViewBasket.adapter =basketAdapter
+
+        basketViewModel.getBasketProduct(activityViewModel.user.id).productId?.let {
+            productViewModel.getProductsForBasket(it)?.observe(viewLifecycleOwner){
+                basketAdapter.submitList(it)
+            }
+        }
     }
 
 
