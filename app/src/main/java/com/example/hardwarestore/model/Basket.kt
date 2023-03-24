@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "basket")
 data class Basket(
-    val id:Int,
     val productId: Int?,
-    val userId: Int?
+    val userId: Int?,
+    @PrimaryKey(autoGenerate = true) val id:Int = 0
 ) {
 
 }

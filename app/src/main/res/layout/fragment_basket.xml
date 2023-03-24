@@ -40,77 +40,105 @@
        android:layout_weight="1"
        android:id="@+id/delete"/>
 </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecucleView_basket"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/view_line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/laout_header"
-        tools:listitem="@layout/basket"
-        tools:itemCount="3"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gardware_001"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RecucleView_basket"
-        android:layout_marginTop="16dp"
-        android:id="@+id/view_line"/>
-
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Оформления заказа"
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/view_line"
-    android:textColor="@color/black"
-    android:textSize="18sp"
-    android:layout_marginTop="16dp"
-    android:id="@+id/text_order"/>
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/laout_header">
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/order"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_order"
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="40dp"
-        android:elevation="16dp"
-        android:orientation="vertical"
-        >
-        <LinearLayout
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RecucleView_basket"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/car"
-                android:text="    Выберите тип доставки"
-                android:textColor="@color/black"
-                android:layout_marginStart="16dp"/>
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/view_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/basket"
+            tools:itemCount="3"/>
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spiiner"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:background="@drawable/spinner_bg"
-                android:spinnerMode="dropdown"
-                android:textAlignment="center"
-                tools:listitem="@layout/spinner" />
-        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gardware_001"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/RecucleView_basket"
+            android:layout_marginTop="16dp"
+            android:id="@+id/view_line"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Оформления заказа"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_line"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:id="@+id/text_order"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/order"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_order"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="40dp"
+            android:elevation="16dp"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/car"
+                    android:text="    Выберите тип доставки"
+                    android:textColor="@color/black"
+                   android:layout_marginBottom="12dp"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spiiner"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/spinner_bg"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="center"
+                    tools:listitem="@layout/spinner" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_bg"
+                    android:text="12:00"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="25dp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:layout_marginBottom="12dp"
+                    android:id="@+id/time"
+                    android:onClick="popTimePicker"/>
+            </LinearLayout>
 
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

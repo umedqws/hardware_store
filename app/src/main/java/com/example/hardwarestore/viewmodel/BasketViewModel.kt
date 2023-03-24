@@ -6,13 +6,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.hardwarestore.model.Basket
 import com.example.hardwarestore.model.DBase
+import com.example.hardwarestore.model.Products
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class BasketViewModel(app: Application): AndroidViewModel(app) {
     private val database= DBase.getInstance(app).basketDao()
 
-    fun getBasketProduct(id:Int):Basket = database.getBasket(id)
+    fun getProductsForBasket(userId:Int):LiveData<List<Products>> =  database.getProductForBasket(userId)
 
     fun insert(
         productId: Int,

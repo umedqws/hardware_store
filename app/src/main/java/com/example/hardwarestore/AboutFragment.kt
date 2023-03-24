@@ -1,6 +1,7 @@
 package com.example.hardwarestore
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.hardwarestore.databinding.FragmentAboutBinding
+import com.example.hardwarestore.viewmodel.ActivityViewModel
 import com.example.hardwarestore.viewmodel.BasketViewModel
 import com.example.hardwarestore.viewmodel.RegistrationViewModel
 
@@ -29,6 +31,7 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val basketViewModel = ViewModelProvider(this)[BasketViewModel::class.java]
         val userViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
+        val activityViewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
 
         val args:AboutFragmentArgs by navArgs()
         binding.imageAbout.setImageResource(args.products.image!!)
@@ -41,7 +44,8 @@ class AboutFragment : Fragment() {
         binding.inBasket.setOnClickListener {
             basketViewModel.insert(
                 args.products.id,
-                args.users.id
+                activityViewModel.user.id
+
             )
         }
 

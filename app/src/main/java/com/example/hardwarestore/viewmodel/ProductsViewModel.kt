@@ -13,6 +13,9 @@ class ProductsViewModel(app: Application) : AndroidViewModel(app) {
 
     fun list(): LiveData<List<Products>> = database.getAllProduct()
 
+    private val _listBasket = MutableLiveData<List<Products>>()
+    val listBasket: LiveData<List<Products>> = _listBasket
+
     private val _search = MutableLiveData<List<Products>>()
     val searchLiveData: LiveData<List<Products>> = _search
 
@@ -23,7 +26,7 @@ class ProductsViewModel(app: Application) : AndroidViewModel(app) {
 
     fun getProductsByCategory(id:Int):LiveData<List<Products>> = database.getProductByCategory(id)
 
-    fun getProductsForBasket(id:Int): LiveData<MutableList<Products>>? = database.getProductForBasket(id)
+
 
     fun insertProduct(
         name: String,

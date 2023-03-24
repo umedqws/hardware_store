@@ -37,7 +37,7 @@ class StoreFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val args:StoreFragmentArgs by navArgs()
+
         val adapter: HitAdapter = HitAdapter()
         val categoryAdapter:CategoryAdapter = CategoryAdapter()
         val productAdapter:ProdtuctAdapter = ProdtuctAdapter()
@@ -69,6 +69,9 @@ class StoreFragment : Fragment() {
         val viewModel = ViewModelProvider(this)[ProductsViewModel::class.java]
         val userViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
         val cViewModel = ViewModelProvider(this)[CategoryViewModel::class.java]
+
+
+
 
         viewModel.list().observe(viewLifecycleOwner) {
             adapter.submitList(it)
@@ -116,7 +119,7 @@ class StoreFragment : Fragment() {
         }
 
         productAdapter.onClick = {
-            val action = StoreFragmentDirections.actionStoreFragmentToAboutFragment(it,args.user)
+            val action = StoreFragmentDirections.actionStoreFragmentToAboutFragment(it)
             findNavController().navigate(action)
         }
 

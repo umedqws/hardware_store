@@ -1,5 +1,6 @@
 package com.example.hardwarestore
 
+import android.app.TimePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import android.widget.TimePicker
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -67,12 +69,15 @@ class BasketFragment : Fragment() {
         basketAdapter = BasketAdapter()
         binding.RecucleViewBasket.adapter =basketAdapter
 
-        basketViewModel.getBasketProduct(activityViewModel.user.id).productId?.let {
-            productViewModel.getProductsForBasket(it)?.observe(viewLifecycleOwner){
+
+
+            basketViewModel.getProductsForBasket(activityViewModel.user.id).observe(viewLifecycleOwner){
                 basketAdapter.submitList(it)
             }
-        }
     }
 
 
-    }
+}
+
+
+

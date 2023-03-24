@@ -3,42 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/storeFragment">
 
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.hardwarestore.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/registrationFragment"
-        android:name="com.example.hardwarestore.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.hardwarestore.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
-        <argument
-            android:name="User"
-            app:argType="com.example.hardwarestore.model.Users" />
-        <action
-            android:id="@+id/action_loginFragment_to_storeFragment2"
-            app:destination="@id/storeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.example.hardwarestore.LocationFragment"
@@ -67,12 +33,6 @@
         <argument
             android:name="products"
             app:argType="com.example.hardwarestore.model.Products" />
-        <argument
-            android:name="users"
-            app:argType="com.example.hardwarestore.model.Users" />
-        <action
-            android:id="@+id/action_aboutFragment_to_basketFragment2"
-            app:destination="@id/basketFragment2" />
     </fragment>
     <fragment
         android:id="@+id/basketFragment2"
@@ -84,10 +44,4 @@
             app:argType="com.example.hardwarestore.model.Users" />
     </fragment>
 
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="com.example.hardwarestore.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
-    </fragment>
 </navigation>

@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:icon="@drawable/ic_outline_home_24"
-        android:id="@+id/splashFragment2"
+        android:id="@+id/storeFragment"
         android:title="Главное меню"
         app:showAsAction="always"/>
 
     <item
-        android:icon="@drawable/ic_outline_person_outline_24"
-        android:id="@+id/loginFragment2"
-        android:title="Мой Профиль"
+        android:icon="@drawable/ic_outline_shopping_cart_24"
+        android:id="@+id/basketFragment2"
+        android:title="Корзина"
         app:showAsAction="always"
         />
 

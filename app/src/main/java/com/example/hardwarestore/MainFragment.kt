@@ -23,8 +23,7 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val navController = (childFragmentManager.findFragmentById(R.id.nav_host_fragment_test) as NavHostFragment).navController
-         binding.bottomNav.setupWithNavController(navController)
+
     }
 
     override fun onDestroyView() {

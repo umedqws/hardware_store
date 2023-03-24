@@ -8,45 +8,43 @@ import android.view.View
 import android.view.View.GONE
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.plusAssign
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.hardwarestore.databinding.ActivityMainBinding
+import com.example.hardwarestore.model.Users
+import com.example.hardwarestore.viewmodel.ActivityViewModel
 
 class MainActivity : AppCompatActivity() {
-    lateinit var toggle: ActionBarDrawerToggle
     private lateinit var binding:ActivityMainBinding
-    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
+     val navHost = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!
 
 
 
 
-        toggle  = ActionBarDrawerToggle(this,binding.drawerLayout,R.string.open,R.string.close)
-        binding.drawerLayout.addDrawerListener(toggle)
+        val activityViewModel = ViewModelProvider(this)[ActivityViewModel::class.java]
+        navHost.findNavController()
+       setupWithNavController( binding.bottomNav,navHost.findNavController())
 
-        toggle.syncState()
-        supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
-        /*binding.navigat.setNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.item1-> Toast.makeText(this,"Хай хай бля1", Toast.LENGTH_SHORT).show()
-                R.id.item2-> Toast.makeText(this,"Хай хай бля2", Toast.LENGTH_SHORT).show()
-                R.id.basketFragment-> navController.navigate(R.id.action_storeFragment_to_basketFragment2)
-            }
-            true
-        }*/
-    }
-    override fun onOptionsItemSelected(item: MenuItem):Boolean{
-        if (toggle.onOptionsItemSelected(item)){
-            return true
+        val a = intent.getParcelableExtra<Users>("title")
+        if (a != null) {
+            activityViewModel.user = a
         }
-        return super.onOptionsItemSelected(item)
+
+
     }
+
+
+
 }

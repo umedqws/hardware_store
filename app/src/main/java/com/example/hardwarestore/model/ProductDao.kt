@@ -11,8 +11,7 @@ interface ProductDao {
     @Query("SELECT * from Products")
     fun getAllProduct(): LiveData<List<Products>>
 
-    @Query("SELECT * from Products WHERE id = :id")
-    fun getProductForBasket(id: Int): LiveData<MutableList<Products>>?
+
 
     @Query("SELECT * from Products WHERE categoryId = :id")
     fun getProductByCategory(id: Int): LiveData<List<Products>>
