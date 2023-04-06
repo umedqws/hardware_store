@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".AboutFragment">
+    tools:context=".view.AboutFragment">
 
 
 <TextView
@@ -14,17 +14,20 @@
     app:layout_constraintTop_toTopOf="parent"
     android:drawableStart="@drawable/ic_baseline_arrow_back"
     android:text="    Вернуться в каталог"
+    android:layout_marginTop="16dp"
     android:gravity="center"
     android:textSize="16sp"
+    android:layout_marginStart="20dp"
     android:textColor="@color/gardware_001"
     android:id="@+id/backKatalog"/>
 
     <androidx.core.widget.NestedScrollView
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/backKatalog"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
         tools:ignore="ScrollViewCount">
 
@@ -33,7 +36,7 @@
             android:layout_height="match_parent">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="0dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -47,19 +50,23 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageAbout"
                 app:cardCornerRadius="30dp"
+                android:id="@+id/body"
+                android:layout_marginEnd="4dp"
                 android:layout_marginVertical="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                >
+              >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:layout_marginStart="20dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -70,7 +77,7 @@
                             android:id="@id/name"
                             />
                         <TextView
-                            android:layout_marginStart="20dp"
+                            android:layout_marginStart="0dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1200 sm"
@@ -121,8 +128,220 @@
 
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="15dp"
+                android:id="@+id/review"
+                android:layout_marginVertical="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/body">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Отзывы от товаре"
+                        android:textColor="@color/gardware_001"
+                        android:layout_marginStart="15dp"
+                        android:id="@+id/otziv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <ImageView
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/five_star"
+                        android:id="@+id/imageStar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/otziv"/>
+                    <TextView
+                        android:layout_marginStart="16dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/button_background"
+                        android:text="4.9/5"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:textColor="@color/white"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:id="@+id/finish_rating"
+                        app:layout_constraintTop_toBottomOf="@+id/imageStar"/>
+                        <TextView
+                            android:layout_marginStart="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:id="@+id/one"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            app:layout_constraintStart_toEndOf="@id/finish_rating"
+                            app:layout_constraintTop_toBottomOf="@id/imageStar"
+                            android:drawableStart="@drawable/ic_baseline_star"
+                            />
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/one_progressIndicator"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="220dp"
+                        android:layout_height="20dp"
+                        app:indicatorColor="@color/gardware_001"
+                        app:trackColor="@color/gray"
+                        app:layout_constraintTop_toBottomOf="@+id/imageStar"
+                        app:layout_constraintStart_toEndOf="@id/one"/>
+                    <TextView
+                        android:layout_marginStart="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:id="@+id/two"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toEndOf="@id/finish_rating"
+                        app:layout_constraintTop_toBottomOf="@id/one"
+                        android:drawableStart="@drawable/ic_baseline_star"
+                        />
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/two_progressIndicator"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="220dp"
+                        android:layout_height="20dp"
+                        app:indicatorColor="@color/gardware_001"
+                        app:trackColor="@color/gray"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/one_progressIndicator"
+                        app:layout_constraintStart_toEndOf="@id/two"/>
+                    <TextView
+                        android:layout_marginStart="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:id="@+id/three"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toEndOf="@id/finish_rating"
+                        app:layout_constraintTop_toBottomOf="@id/two"
+                        android:drawableStart="@drawable/ic_baseline_star"
+                        />
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/four_progressIndicator"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="220dp"
+                        android:layout_height="20dp"
+                        app:indicatorColor="@color/gardware_001"
+                        app:trackColor="@color/gray"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/three_progressIndicator"
+                        app:layout_constraintStart_toEndOf="@id/two"/>
+                    <TextView
+                        android:layout_marginStart="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:id="@+id/five"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toEndOf="@id/finish_rating"
+                        app:layout_constraintTop_toBottomOf="@id/four"
+                        android:drawableStart="@drawable/ic_baseline_star"
+                        />
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/five_progressIndicator"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="220dp"
+                        android:layout_height="20dp"
+                        app:indicatorColor="@color/gardware_001"
+                        app:trackColor="@color/gray"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/four_progressIndicator"
+                        app:layout_constraintStart_toEndOf="@id/two"/>
+
+                    <TextView
+                        android:layout_marginStart="12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:id="@+id/four"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toEndOf="@id/finish_rating"
+                        app:layout_constraintTop_toBottomOf="@id/three"
+                        android:drawableStart="@drawable/ic_baseline_star"
+                        />
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/three_progressIndicator"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="220dp"
+                        android:layout_height="20dp"
+                        app:indicatorColor="@color/gardware_001"
+                        app:trackColor="@color/gray"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toBottomOf="@id/two_progressIndicator"
+                        app:layout_constraintStart_toEndOf="@id/two"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/comment_recycler"
+                        tools:listitem="@layout/comment"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@id/finish_rating"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/review">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <RatingBar
+                        android:id="@+id/rating_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:progressBackgroundTint="@color/black"
+                        android:progressTint="@color/gardware_001"
+                        android:rating="2"
+                        android:stepSize="1"
+                        android:isIndicator="false"
+                        style="@style/Widget.AppCompat.RatingBar.Indicator"/>
+
+                    <EditText
+                        android:id="@+id/editTextTextMultiLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:ems="10"
+                        android:layout_marginHorizontal="20dp"
+                        android:gravity="start|top"
+                        android:inputType="textMultiLine" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/button_background"
+    android:text="OK"
+    android:textSize="22sp"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:textColor="@color/white"
+    android:paddingHorizontal="45dp"
+    android:id="@+id/send_button"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

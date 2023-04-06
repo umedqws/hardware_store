@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import kotlinx.coroutines.internal.synchronized
 
 @Database(
-    entities = [Users::class, Products::class,Categories::class,Basket::class],
+    entities = [Users::class, Products::class,Categories::class,Basket::class,History::class,UserTime::class,Review::class],
     version = 1,
     exportSchema = false
 )
@@ -16,6 +16,9 @@ abstract class DBase: RoomDatabase() {
     abstract fun productDao():ProductDao
     abstract fun categoryDao():CategoryDao
     abstract fun basketDao():BasketDao
+    abstract fun historyDao():HistoryDao
+    abstract fun timeDao():TimeDao
+    abstract fun reviewDao():ReviewDao
     companion object{
         @Volatile
         private var INSTANCE:DBase? = null

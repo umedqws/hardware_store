@@ -5,8 +5,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="16dp"
-    tools:context=".BasketFragment">
+    tools:context=".view.BasketFragment">
 <LinearLayout
+    android:layout_marginTop="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintStart_toStartOf="parent"
@@ -30,17 +31,12 @@
        android:textSize="18sp"
        android:textColor="@color/black"
        android:layout_gravity="center"
-       android:layout_weight="2"
+       android:layout_weight="3"
        android:textAlignment="center"
        />
-   <ImageView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:src="@drawable/ic_baseline_delete_24"
-       android:layout_weight="1"
-       android:id="@+id/delete"/>
 </LinearLayout>
 <androidx.core.widget.NestedScrollView
+    android:id="@+id/scrollViewNested"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +90,10 @@
             android:layout_marginTop="8dp"
             app:cardCornerRadius="40dp"
             android:elevation="16dp"
+            android:layout_marginHorizontal="1dp"
             android:orientation="vertical"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@id/payment"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,7 +110,7 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spiiner"
-                    android:layout_width="180dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:background="@drawable/spinner_bg"
@@ -122,23 +121,149 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/spinner_bg"
-                    android:text="12:00"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="25dp"
-                    android:textAlignment="center"
+                    android:drawableStart="@drawable/ic_baseline_access_time_24"
+                    android:text="    Выберите время и дату доставки"
+                    android:textColor="@color/black"
                     android:gravity="center"
+                    android:layout_marginBottom="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/spinner_bg"
+                        android:text="12:00"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="25dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp"
+                        android:id="@+id/time" />
+                    <TextView
+                        android:layout_marginStart="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/spinner_bg"
+                        android:text="12.12.2012"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="25dp"
+                        android:textAlignment="center"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp"
+                        android:id="@+id/date" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_monetization_on_24"
+                    android:text="    Выберите способ оплаты"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginBottom="12dp"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinner"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
-                    android:id="@+id/time"
-                    android:onClick="popTimePicker"/>
+                    android:background="@drawable/spinner_bg"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="center"
+                    tools:listitem="@layout/spinner" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="3 товара"
+                        android:textColor="@color/black"
+                        android:id="@+id/quantity" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/total"
+                        android:layout_height="wrap_content"
+                        android:text="5000sm"
+                        android:layout_marginStart="100dp"
+                        android:textColor="@color/gardware_001"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Достоавка"
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Бесплатно"
+                        android:layout_marginStart="100dp"
+                        android:textColor="@color/gardware_001"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="2">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Бонус"
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/bonus_payment"
+                        android:layout_height="wrap_content"
+                        android:text="5000sm"
+                        android:layout_marginStart="100dp"
+                        android:textColor="@color/gardware_001"/>
+                </LinearLayout>
+
             </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintTop_toBottomOf="@id/order"
+           android:background="@drawable/button_background"
+           android:text="Перейти к оплате"
+           android:textColor="@color/white"
+           android:paddingVertical="4dp"
+           android:textSize="18sp"
+           android:id="@+id/payment"
+           android:paddingHorizontal="20dp"
+           android:layout_margin="20dp"
+           app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

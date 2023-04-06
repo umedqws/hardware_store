@@ -1,6 +1,8 @@
-package com.example.hardwarestore
+package com.example.hardwarestore.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,29 +23,41 @@ class RegistrationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+
         _binding = FragmentRegistrationBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val registrationViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
-//        registrationViewModel.getUser.observe(viewLifecycleOwner){
-//
-//        }
+        val userViewModel = ViewModelProvider(this)[RegistrationViewModel::class.java]
+
         binding.back.setOnClickListener {
             val navController = findNavController()
             navController.popBackStack()
         }
-//
-//        binding.regist.setOnClickListener {
-//            registrationViewModel.insertNewUser(
-//                binding.firstNameUser.text.toString(),
-//            binding.lastNameUser.text.toString(),
-//            binding.nickNameUser.text.toString(),
-//            binding.passwordUser.text.toString(),
-//            binding.numberTelefonUser.text.toString())
-//        }
+        binding.regist.setOnClickListener {
+
+            userViewModel.insertNewUser(
+                binding.firstNameUser.text.toString(),
+            binding.lastNameUser.text.toString(),
+            binding.nickNameUser.text.toString(),
+            binding.passwordUser.text.toString(),
+            binding.numberTelefonUser.text.toString())
+
+
+            userViewModel.getUsers(
+                binding.passwordUser.text.toString(),
+                binding.numberTelefonUser.text.toString()
+            ).observe(viewLifecycleOwner) {
+
+                val intent = Intent(requireContext(), MainActivity::class.java)
+                intent.putExtra(
+                    "title",it
+                )
+                startActivity(intent)
+            }
+
+        }
     }
 
 }

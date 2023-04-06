@@ -3,12 +3,10 @@ package com.example.hardwarestore.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.hardwarestore.model.DBase
 import com.example.hardwarestore.model.Users
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel(app: Application) : AndroidViewModel(app) {
@@ -18,7 +16,7 @@ class RegistrationViewModel(app: Application) : AndroidViewModel(app) {
 
 
 
-    fun getAllUser() = dataBase.getAllUser()
+    fun userById(id:Int):LiveData<Users> = dataBase.getIdUser(id)
 
     fun getUsers(number:String,passwordUser: String) = dataBase.getUser(number, passwordUser)
 
@@ -30,9 +28,16 @@ class RegistrationViewModel(app: Application) : AndroidViewModel(app) {
         dataBase.insertUser(Users(firstName,lastName,nickName,passwordUser,numberTelefonUser ))
     }
 
-    fun deleteUser(firstName:String,lastName:String,nickName:String,passwordUser:String,numberTelefonUser:String,id:Int)
+    fun update(imageUri: String, userId: Int) = viewModelScope.launch(Dispatchers.IO) {
+        dataBase.update(imageUri, userId)
+    }
+
+    fun getImage(userId: Int) = dataBase.getImage(userId)
+
+
+    fun deleteUser(firstName:String,lastName:String,nickName:String,passwordUser:String,numberTelefonUser:String)
             = viewModelScope.launch(Dispatchers.IO){
-        dataBase.delete(Users(firstName,lastName,nickName,passwordUser,numberTelefonUser,id))
+        dataBase.delete(Users(firstName,lastName,nickName,passwordUser,numberTelefonUser))
     }
 
 

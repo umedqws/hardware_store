@@ -17,8 +17,27 @@
         android:layout_marginVertical="8dp"
         android:layout_marginHorizontal="8dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/gardware_001"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_height="match_parent"
+                android:background="@color/gardware_001"
+                android:textColor="@color/white"
+                android:text="ХИТ"/>
+        </androidx.cardview.widget.CardView>
+
         <ImageView
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:id="@+id/image"
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -75,11 +94,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ПОДРОБНЕЕ О МОДЕЛЕ"
-                android:textSize="6dp"
+                android:textSize="5dp"
+                android:id="@+id/aboutText"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:background="@color/gardware_001"
-                android:padding="4dp" />
+                android:padding="3dp" />
 
         </LinearLayout>
 

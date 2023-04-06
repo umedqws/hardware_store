@@ -13,10 +13,12 @@ data class Users(
    @ColumnInfo val nickName:String?,
    @ColumnInfo val password:String?,
    @ColumnInfo val numberPhone:String?,
+   @ColumnInfo val imageUser: String? = "2",
    @PrimaryKey(autoGenerate = true) val id:Int = 0,
 
-):Parcelable {
+   ):Parcelable {
    constructor(parcel: Parcel) : this(
+      parcel.readString(),
       parcel.readString(),
       parcel.readString(),
       parcel.readString(),
@@ -32,6 +34,7 @@ data class Users(
       parcel.writeString(nickName)
       parcel.writeString(password)
       parcel.writeString(numberPhone)
+      parcel.writeString(imageUser)
       parcel.writeInt(id)
    }
 

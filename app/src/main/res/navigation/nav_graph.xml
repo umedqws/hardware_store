@@ -7,12 +7,16 @@
 
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.example.hardwarestore.LocationFragment"
+        android:name="com.example.hardwarestore.view.LocationFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_location" />
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_mainFragment2"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/storeFragment"
-        android:name="com.example.hardwarestore.StoreFragment"
+        android:name="com.example.hardwarestore.view.StoreFragment"
         android:label="fragment_store"
         tools:layout="@layout/fragment_store" >
         <action
@@ -24,10 +28,13 @@
         <argument
             android:name="user"
             app:argType="com.example.hardwarestore.model.Users" />
+        <action
+            android:id="@+id/action_storeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.example.hardwarestore.AboutFragment"
+        android:name="com.example.hardwarestore.view.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" >
         <argument
@@ -36,12 +43,50 @@
     </fragment>
     <fragment
         android:id="@+id/basketFragment2"
-        android:name="com.example.hardwarestore.BasketFragment"
+        android:name="com.example.hardwarestore.view.BasketFragment"
         android:label="fragment_basket"
         tools:layout="@layout/fragment_basket" >
         <argument
             android:name="user"
             app:argType="com.example.hardwarestore.model.Users" />
+        <action
+            android:id="@+id/action_basketFragment2_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.hardwarestore.view.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hardwarestore.view.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_fragmentHistory"
+            app:destination="@id/fragmentHistory" />
+        <action
+            android:id="@+id/action_profileFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.hardwarestore.view.SettingFragment"
+        android:label="fragment_setteing"
+        tools:layout="@layout/fragment_setteing" />
+    <fragment
+        android:id="@+id/fragmentHistory"
+        android:name="com.example.hardwarestore.view.FragmentHistory"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.hardwarestore.view.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
 
 </navigation>

@@ -1,17 +1,16 @@
-package com.example.hardwarestore
+package com.example.hardwarestore.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.hardwarestore.databinding.HitproductBinding
+import com.example.hardwarestore.R
 import com.example.hardwarestore.databinding.ProductBinding
 import com.example.hardwarestore.model.Products
 
-class ProdtuctAdapter:ListAdapter<Products,ProdtuctAdapter.ProductViewHolder>(HitDiffUtils()) {
+class ProdtuctAdapter:ListAdapter<Products, ProdtuctAdapter.ProductViewHolder>(HitDiffUtils()) {
     var onClick:((Products)->Unit)?=null
     inner class ProductViewHolder(itemView: View) : ViewHolder(itemView) {
 
@@ -21,7 +20,7 @@ class ProdtuctAdapter:ListAdapter<Products,ProdtuctAdapter.ProductViewHolder>(Hi
             products.image?.let { binding.image.setImageResource(it) }
             binding.name.text = products.nameProduct
             binding.description.text = products.descriptionProduct
-            binding.price.text = "${products.price} sm"
+            binding.price.text = "${products.price} tjs"
 
             binding.aboutText.setOnClickListener {
                 onClick?.invoke(getItem(adapterPosition))

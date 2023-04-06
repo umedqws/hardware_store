@@ -1,4 +1,4 @@
-package com.example.hardwarestore
+package com.example.hardwarestore.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.hardwarestore.R
 import com.example.hardwarestore.databinding.CategoryBinding
 import com.example.hardwarestore.model.Categories
-import com.example.hardwarestore.model.Products
 
-class CategoryAdapter:ListAdapter<Categories,CategoryAdapter.CategoryViewHolder>(CategoryDiffUtils()) {
+class CategoryAdapter:ListAdapter<Categories, CategoryAdapter.CategoryViewHolder>(CategoryDiffUtils()) {
     var onClickItem:((Categories)->Unit)?=null
     inner class CategoryViewHolder(itemView: View):ViewHolder(itemView){
        private val binding = CategoryBinding.bind(itemView)

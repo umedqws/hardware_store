@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LoginFragment">
+    tools:context=".view.LoginFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:id="@+id/logoText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Магазин\nСторитель"
+            android:text="Магазин\nСтроитель"
             android:textColor="@color/black"
             android:textSize="26sp"
             android:textStyle="bold"
@@ -51,7 +51,7 @@
     app:layout_constraintTop_toBottomOf="@+id/_logo"
     android:textColor="@color/gardware_001"
     android:id="@+id/textInput"
-    android:text="Вход в рилодение Магазин Строитель"
+    android:text="Вход в приложение Магазин Строитель"
     android:textSize="14sp"/>
 
     <EditText
@@ -73,13 +73,28 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="16dp"
-        android:hint="Password"
+        android:hint="Пароль"
+        android:inputType="textPassword"
         android:textColor="@color/gardware_001"
         android:theme="@style/MyEditTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/numberLogin"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck"
+        />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+    android:id="@+id/showPasswordToggle"
+    android:layout_width="36dp"
+    android:layout_height="36dp"
+        android:textOff=""
+        android:textOn=""
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_baseline_visibility_off_24"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/numberLogin"
+        />
 
     <Button
         android:id="@+id/login"
