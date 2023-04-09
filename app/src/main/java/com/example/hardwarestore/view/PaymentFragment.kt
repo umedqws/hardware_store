@@ -6,25 +6,20 @@ import android.content.Context.NOTIFICATION_SERVICE
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.hardwarestore.App
+import com.example.hardwarestore.model.App
 import com.example.hardwarestore.R
 import com.example.hardwarestore.databinding.FragmentPaymentBinding
-import com.example.hardwarestore.model.History
 import com.example.hardwarestore.viewmodel.ActivityViewModel
 import com.example.hardwarestore.viewmodel.BasketViewModel
 import com.example.hardwarestore.viewmodel.HistoryViewModel
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
 
 

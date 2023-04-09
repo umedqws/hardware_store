@@ -1,4 +1,4 @@
-package com.example.hardwarestore
+package com.example.hardwarestore.model
 
 import android.app.Application
 import android.app.NotificationChannel
